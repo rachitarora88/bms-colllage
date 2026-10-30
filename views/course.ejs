@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow"><%= course.degree_type %></p>
+    <h1><%= course.title %></h1>
+    <p><%= course.description %></p>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container two-col">
+    <div>
+      <img class="feature-photo" src="<%= course.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80' %>" alt="<%= course.title %>" />
+    </div>
+    <div class="content-copy">
+      <h2>Program highlights</h2>
+      <ul class="check-list">
+        <li><strong>Department:</strong> <%= course.department_name %></li>
+        <li><strong>Duration:</strong> <%= course.duration %></li>
+        <li><strong>Eligibility:</strong> <%= course.eligibility %></li>
+        <li><strong>Admission process:</strong> <%= course.admission_process %></li>
+      </ul>
+      <% if (course.curriculum_url) { %>
+        <a class="btn btn-primary" href="<%= course.curriculum_url %>" target="_blank" rel="noreferrer">View Curriculum</a>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Related programs</p>
+      <h2>Continue exploring</h2>
+    </div>
+    <div class="card-grid three-grid">
+      <% related.forEach((item) => { %>
+        <article class="course-card">
+          <div class="card-body">
+            <p class="meta"><%= item.degree_type %></p>
+            <h3><%= item.title %></h3>
+            <p><%= item.description %></p>
+            <a class="btn btn-secondary" href="/courses/<%= item.slug %>">Explore Program</a>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

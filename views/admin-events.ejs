@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Event management</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container form-wrap">
+    <form class="stacked-form" action="/admin/events" method="POST">
+      <div class="form-grid">
+        <label>
+          Title
+          <input type="text" name="title" required />
+        </label>
+        <label>
+          Slug
+          <input type="text" name="slug" required />
+        </label>
+        <label>
+          Date
+          <input type="date" name="event_date" />
+        </label>
+        <label>
+          Venue
+          <input type="text" name="venue" />
+        </label>
+        <label>
+          Image URL
+          <input type="url" name="image_url" />
+        </label>
+        <label class="full-width">
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Create Event</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr><th>Title</th><th>Date</th><th>Venue</th></tr>
+      </thead>
+      <tbody>
+        <% events.forEach((event) => { %>
+          <tr>
+            <td><%= event.title %></td>
+            <td><%= formatDate(event.event_date) %></td>
+            <td><%= event.venue %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

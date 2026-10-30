@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Admission management</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Program</th>
+          <th>Reference</th>
+          <th>Document</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% applications.forEach((application) => { %>
+          <tr>
+            <td><%= application.applicant_name %></td>
+            <td><%= application.program_applied %></td>
+            <td><%= application.reference_number %></td>
+            <td>
+              <% if (application.document_path) { %>
+                <a href="/admin/applications/<%= application.id %>/document">Download</a>
+              <% } else { %>
+                -
+              <% } %>
+            </td>
+            <td><%= application.status %></td>
+            <td>
+              <form action="/admin/applications/<%= application.id %>/status" method="POST" class="inline-action">
+                <select name="status">
+                  <option value="Submitted" <%= application.status === 'Submitted' ? 'selected' : '' %>>Submitted</option>
+                  <option value="Under Review" <%= application.status === 'Under Review' ? 'selected' : '' %>>Under Review</option>
+                  <option value="Additional Information Required" <%= application.status === 'Additional Information Required' ? 'selected' : '' %>>Additional Information Required</option>
+                  <option value="Shortlisted" <%= application.status === 'Shortlisted' ? 'selected' : '' %>>Shortlisted</option>
+                  <option value="Accepted" <%= application.status === 'Accepted' ? 'selected' : '' %>>Accepted</option>
+                  <option value="Rejected" <%= application.status === 'Rejected' ? 'selected' : '' %>>Rejected</option>
+                  <option value="Withdrawn" <%= application.status === 'Withdrawn' ? 'selected' : '' %>>Withdrawn</option>
+                </select>
+                <button class="btn btn-primary small" type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

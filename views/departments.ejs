@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Academics</p>
+    <h1>Departments</h1>
+    <p>Explore the academic schools and disciplines that shape the learning experience at <%= settings.site_name %>.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container card-grid three-grid">
+    <% departments.forEach((department) => { %>
+      <article class="course-card">
+        <img src="<%= department.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80' %>" alt="<%= department.name %>" />
+        <div class="card-body">
+          <p class="meta"><%= department.head_name %></p>
+          <h3><%= department.name %></h3>
+          <p><%= department.description %></p>
+          <a class="btn btn-secondary" href="/departments/<%= department.slug %>">View Department</a>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

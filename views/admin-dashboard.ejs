@@ -1,0 +1,79 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Administrator dashboard</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container stats-grid">
+    <div class="stat-card"><h3><%= stats.totalCourses %></h3><p>Published Courses</p></div>
+    <div class="stat-card"><h3><%= stats.totalDepartments %></h3><p>Departments</p></div>
+    <div class="stat-card"><h3><%= stats.totalFaculty %></h3><p>Faculty Records</p></div>
+    <div class="stat-card"><h3><%= stats.totalStudents %></h3><p>Student Accounts</p></div>
+    <div class="stat-card"><h3><%= stats.pendingApplications %></h3><p>Pending Applications</p></div>
+    <div class="stat-card"><h3><%= stats.upcomingEvents %></h3><p>Upcoming Events</p></div>
+    <div class="stat-card"><h3><%= stats.unreadInquiries %></h3><p>Unread Inquiries</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container dashboard-grid">
+    <article class="mini-panel full-width">
+      <h3>Recent applications</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Name</th><th>Program</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <% applications.forEach((application) => { %>
+            <tr>
+              <td><%= application.applicant_name %></td>
+              <td><%= application.program_applied %></td>
+              <td><%= application.status %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="mini-panel full-width">
+      <h3>Recent inquiries</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Name</th><th>Subject</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <% inquiries.forEach((inquiry) => { %>
+            <tr>
+              <td><%= inquiry.name %></td>
+              <td><%= inquiry.subject %></td>
+              <td><%= inquiry.status %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </article>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Management</p>
+      <h2>Administration shortcuts</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-box"><h3><a href="/admin/courses">Course Management</a></h3></div>
+      <div class="feature-box"><h3><a href="/admin/departments">Department Management</a></h3></div>
+      <div class="feature-box"><h3><a href="/admin/events">Event Management</a></h3></div>
+      <div class="feature-box"><h3><a href="/admin/announcements">Announcement Management</a></h3></div>
+      <div class="feature-box"><h3><a href="/admin/applications">Admission Management</a></h3></div>
+      <div class="feature-box"><h3><a href="/admin/inquiries">Inquiry Management</a></h3></div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

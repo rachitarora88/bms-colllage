@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Announcement management</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container form-wrap">
+    <form class="stacked-form" action="/admin/announcements" method="POST">
+      <div class="form-grid">
+        <label>
+          Title
+          <input type="text" name="title" required />
+        </label>
+        <label>
+          Slug
+          <input type="text" name="slug" required />
+        </label>
+        <label>
+          Published date
+          <input type="date" name="published_at" />
+        </label>
+        <label>
+          Image URL
+          <input type="url" name="image_url" />
+        </label>
+        <label class="full-width">
+          Content
+          <textarea name="content" rows="5"></textarea>
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Create Announcement</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr><th>Title</th><th>Date</th></tr>
+      </thead>
+      <tbody>
+        <% announcements.forEach((announcement) => { %>
+          <tr>
+            <td><%= announcement.title %></td>
+            <td><%= formatDate(announcement.published_at) %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

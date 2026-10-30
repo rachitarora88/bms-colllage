@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Authentication</p>
+    <h1>Create an account</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container form-wrap">
+    <% if (error) { %>
+      <div class="alert alert-error"><%= error %></div>
+    <% } %>
+
+    <form class="stacked-form" action="/register" method="POST">
+      <label>
+        Full name
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Email address
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" required />
+      </label>
+      <label>
+        Role
+        <select name="role">
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

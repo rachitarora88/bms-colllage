@@ -1,0 +1,94 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">About us</p>
+    <h1>Building a culture of learning and excellence</h1>
+    <p><%= settings.about_summary %></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-col">
+    <div>
+      <h2>College overview</h2>
+      <p>Northwood College offers a student-centered, research-informed learning environment where academic rigor and personal development go hand in hand. We promote creativity, ethical thinking, and collaboration across disciplines.</p>
+      <p>Our campus encourages practical learning, faculty mentorship, and inclusive participation across student life, academics, and professional development.</p>
+    </div>
+    <div>
+      <div class="mini-panel">
+        <h3>Mission</h3>
+        <p>To provide meaningful education, nurtured by inquiry, professional readiness, and community engagement.</p>
+      </div>
+      <div class="mini-panel">
+        <h3>Vision</h3>
+        <p>To be a respected learning institution that inspires future leaders, creators, and professionals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Our values</p>
+      <h2>Principles that guide the campus</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-box"><h3>Excellence</h3><p>We promote ambitious, high-quality academic performance and continuous improvement.</p></div>
+      <div class="feature-box"><h3>Integrity</h3><p>Ethical conduct, fairness, and human dignity remain central to the institutional culture.</p></div>
+      <div class="feature-box"><h3>Innovation</h3><p>We support inquiry, experimentation, and creative problem solving across programs.</p></div>
+      <div class="feature-box"><h3>Inclusion</h3><p>Our campus values diversity, access, and belonging for every student, family, and staff member.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="leadership">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Leadership</p>
+      <h2>Academic leadership and administration</h2>
+    </div>
+    <div class="faculty-grid">
+      <% faculty.forEach((person) => { %>
+        <article class="faculty-card">
+          <img src="<%= person.image_url || 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80' %>" alt="<%= person.name %>" />
+          <div class="card-body compact">
+            <h3><%= person.name %></h3>
+            <p class="meta"><%= person.designation %></p>
+            <p><%= person.bio %></p>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Academic philosophy</p>
+      <h2>Learning with relevance and responsibility</h2>
+    </div>
+    <div class="split-list">
+      <div>
+        <h3>Student-centered teaching</h3>
+        <p>Students learn best when instruction combines active engagement, meaningful feedback, and mentorship.</p>
+      </div>
+      <div>
+        <h3>Practical engagement</h3>
+        <p>Programs are designed to connect concepts with hands-on learning, internships, and applied projects.</p>
+      </div>
+      <div>
+        <h3>Research orientation</h3>
+        <p>Faculty and students explore emerging questions, methods, and solutions that contribute to real-world impact.</p>
+      </div>
+      <div>
+        <h3>Community focus</h3>
+        <p>Our students develop social responsibility, leadership, and awareness of local and global needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

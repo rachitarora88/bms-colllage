@@ -1,0 +1,204 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Welcome to <%= settings.site_name %></p>
+      <h1><%= settings.hero_title %></h1>
+      <p><%= settings.hero_description %></p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="/apply">Apply Now</a>
+        <a class="btn btn-secondary" href="/courses">Explore Programs</a>
+      </div>
+      <div class="quick-links">
+        <a href="/admissions">Admission Notices</a>
+        <a href="/departments">Departments</a>
+        <a href="/contact">Campus Tour</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card hero-card-large">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80" alt="College campus" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Quick information</p>
+      <h2>Everything you need to know</h2>
+    </div>
+    <div class="info-grid">
+      <article class="info-card">
+        <span>01</span>
+        <h3>Academic Programs</h3>
+        <p>Undergraduate, professional, and interdisciplinary offerings designed around career readiness.</p>
+      </article>
+      <article class="info-card">
+        <span>02</span>
+        <h3>Departments</h3>
+        <p>Departments are structured around research, industry alignment, and student mentoring.</p>
+      </article>
+      <article class="info-card">
+        <span>03</span>
+        <h3>Admissions</h3>
+        <p>Application workflows, timelines, and program information are updated by the admissions team.</p>
+      </article>
+      <article class="info-card">
+        <span>04</span>
+        <h3>Campus Facilities</h3>
+        <p>Libraries, labs, sports, hostel facilities, and student support spaces support holistic learning.</p>
+      </article>
+      <article class="info-card">
+        <span>05</span>
+        <h3>Student Support</h3>
+        <p>Academic mentoring, wellness initiatives, and placement guidance are layered into the student journey.</p>
+      </article>
+      <article class="info-card">
+        <span>06</span>
+        <h3>Placements</h3>
+        <p>Career support and employer partnerships are managed through the dedicated placement office.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container two-col">
+    <div>
+      <img class="feature-photo" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80" alt="College students learning" />
+    </div>
+    <div class="content-copy">
+      <p class="eyebrow">About the college</p>
+      <h2>Learning with purpose, leadership, and discovery</h2>
+      <p><%= settings.about_summary %></p>
+      <div class="split-list">
+        <div>
+          <h3>Mission</h3>
+          <p>To nurture capable graduates who combine academic excellence with practical understanding and ethical leadership.</p>
+        </div>
+        <div>
+          <h3>Vision</h3>
+          <p>To become a trusted center for learning, innovation, and inclusive student development.</p>
+        </div>
+      </div>
+      <a class="btn btn-primary" href="/about">Read More</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Academic programs</p>
+      <h2>Programs built for future-ready careers</h2>
+    </div>
+    <div class="card-grid three-grid">
+      <% courses.forEach((course) => { %>
+        <article class="course-card">
+          <img src="<%= course.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80' %>" alt="<%= course.title %>" />
+          <div class="card-body">
+            <p class="meta"><%= course.degree_type %> · <%= course.department_name %></p>
+            <h3><%= course.title %></h3>
+            <p><%= course.description %></p>
+            <ul class="inline-list">
+              <li><strong>Duration:</strong> <%= course.duration %></li>
+              <li><strong>Eligibility:</strong> <%= course.eligibility %></li>
+            </ul>
+            <a class="btn btn-secondary" href="/courses/<%= course.slug %>">View Details</a>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Why choose us</p>
+      <h2>A student-first campus experience</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-box"><h3>Qualified faculty</h3><p>Faculty mentors bring academic depth and industry perspective to every classroom.</p></div>
+      <div class="feature-box"><h3>Practical learning</h3><p>Projects, labs, and workshops help students connect theory with real-world application.</p></div>
+      <div class="feature-box"><h3>Research opportunities</h3><p>Students participate in applied inquiry, mentoring, and collaborative discovery.</p></div>
+      <div class="feature-box"><h3>Modern laboratories</h3><p>Learning spaces are equipped for experimentation, analysis, and technical exploration.</p></div>
+      <div class="feature-box"><h3>Student activities</h3><p>Campus clubs, events, and leadership programs support confidence and belonging.</p></div>
+      <div class="feature-box"><h3>Career support</h3><p>Placement guidance and employer communication remain central to the student journey.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Campus facilities</p>
+      <h2>Spaces that support growth</h2>
+    </div>
+    <div class="facility-grid">
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80" alt="Library" /><h3>Library</h3></article>
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Laboratory" /><h3>Laboratories</h3></article>
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Computer facilities" /><h3>Computer Facilities</h3></article>
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Hostel" /><h3>Hostel</h3></article>
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=600&q=80" alt="Sports facilities" /><h3>Sports</h3></article>
+      <article class="facility-card"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="Auditorium" /><h3>Auditorium</h3></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Faculty highlights</p>
+      <h2>Researchers and mentors</h2>
+    </div>
+    <div class="faculty-grid">
+      <% faculty.forEach((person) => { %>
+        <article class="faculty-card">
+          <img src="<%= person.image_url || 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80' %>" alt="<%= person.name %>" />
+          <div class="card-body compact">
+            <h3><%= person.name %></h3>
+            <p class="meta"><%= person.designation %></p>
+            <p><%= person.bio %></p>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">News and events</p>
+      <h2>Latest announcements</h2>
+    </div>
+    <div class="news-grid">
+      <% announcements.forEach((announcement) => { %>
+        <article class="news-card">
+          <img src="<%= announcement.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80' %>" alt="<%= announcement.title %>" />
+          <div class="card-body">
+            <p class="meta"><%= formatDate(announcement.published_at) %></p>
+            <h3><%= announcement.title %></h3>
+            <p><%= announcement.content %></p>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-strip">
+  <div class="container cta-box">
+    <div>
+      <p class="eyebrow">Admissions</p>
+      <h2>Take the first step toward your future.</h2>
+    </div>
+    <a class="btn btn-primary" href="/apply">Apply Now</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

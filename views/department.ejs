@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Department</p>
+    <h1><%= department.name %></h1>
+    <p><%= department.description %></p>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container two-col">
+    <div>
+      <img class="feature-photo" src="<%= department.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80' %>" alt="<%= department.name %>" />
+    </div>
+    <div class="content-copy">
+      <h2>Department overview</h2>
+      <p><%= department.description %></p>
+      <ul class="check-list">
+        <li><strong>Head of department:</strong> <%= department.head_name %></li>
+        <li><strong>Contact email:</strong> <%= department.contact_email %></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Associated programs</p>
+      <h2>Programs in <%= department.name %></h2>
+    </div>
+    <div class="card-grid three-grid">
+      <% courses.forEach((course) => { %>
+        <article class="course-card">
+          <div class="card-body">
+            <p class="meta"><%= course.degree_type %></p>
+            <h3><%= course.title %></h3>
+            <p><%= course.description %></p>
+            <a class="btn btn-secondary" href="/courses/<%= course.slug %>">View Program</a>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

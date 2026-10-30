@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Programs</p>
+    <h1>Courses and Programs</h1>
+    <p>Browse the college catalog and filter by department or program type.</p>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container filter-bar">
+    <form method="GET" action="/courses" class="filter-form">
+      <label>
+        Department
+        <select name="department">
+          <option value="">All departments</option>
+          <% departments.forEach((department) => { %>
+            <option value="<%= department.slug %>" <%= selectedDepartment === department.slug ? 'selected' : '' %>><%= department.name %></option>
+          <% }) %>
+        </select>
+      </label>
+      <label>
+        Degree Type
+        <select name="degree">
+          <option value="">All programs</option>
+          <option value="Undergraduate" <%= selectedDegree === 'Undergraduate' ? 'selected' : '' %>>Undergraduate</option>
+          <option value="Postgraduate" <%= selectedDegree === 'Postgraduate' ? 'selected' : '' %>>Postgraduate</option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Apply Filters</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container card-grid three-grid">
+    <% courses.forEach((course) => { %>
+      <article class="course-card">
+        <img src="<%= course.image_url || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80' %>" alt="<%= course.title %>" />
+        <div class="card-body">
+          <p class="meta"><%= course.degree_type %> · <%= course.department_name %></p>
+          <h3><%= course.title %></h3>
+          <p><%= course.description %></p>
+          <ul class="inline-list">
+            <li><strong>Duration:</strong> <%= course.duration %></li>
+            <li><strong>Eligibility:</strong> <%= course.eligibility %></li>
+          </ul>
+          <a class="btn btn-secondary" href="/courses/<%= course.slug %>">View Details</a>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

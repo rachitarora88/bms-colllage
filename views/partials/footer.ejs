@@ -1,0 +1,43 @@
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3><%= settings.site_name %></h3>
+          <p><%= settings.about_summary %></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><%= settings.address %></li>
+            <li><a href="tel:<%= settings.phone %>"><%= settings.phone %></a></li>
+            <li><a href="mailto:<%= settings.email %>"><%= settings.email %></a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/departments">Departments</a></li>
+            <li><a href="/courses">Programs</a></li>
+            <li><a href="/admissions">Admissions</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms & Conditions</a></li>
+            <li><a href="/accessibility-statement">Accessibility</a></li>
+            <li><a href="/faq">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p><%= settings.copyright %></p>
+      </div>
+    </footer>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

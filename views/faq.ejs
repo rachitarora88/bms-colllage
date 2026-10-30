@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Support</p>
+    <h1>Frequently Asked Questions</h1>
+    <p>Common questions about academics, admissions, and student life are listed below.</p>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container faq-list">
+    <% faqs.forEach((faq) => { %>
+      <article class="faq-item">
+        <h3><%= faq.question %></h3>
+        <p><%= faq.answer %></p>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

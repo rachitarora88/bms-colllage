@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | <%= settings.site_name %></title>
+    <meta name="description" content="<%= settings.tagline %>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="/" aria-label="Northwood College home">
+          <span class="brand-mark">N</span>
+          <span class="brand-copy">
+            <strong><%= settings.site_name %></strong>
+            <small><%= settings.tagline %></small>
+          </span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <div class="nav-dropdown">
+            <button type="button" aria-label="About navigation">About</button>
+            <div class="dropdown-menu">
+              <a href="/about">About Us</a>
+              <a href="/faq">FAQs</a>
+              <a href="/about#leadership">Leadership</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button type="button" aria-label="Academics navigation">Academics</button>
+            <div class="dropdown-menu">
+              <a href="/departments">Departments</a>
+              <a href="/courses">Courses</a>
+              <a href="/admissions">Admissions</a>
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button type="button" aria-label="Campus navigation">Campus Life</button>
+            <div class="dropdown-menu">
+              <a href="/about">Campus & Infrastructure</a>
+              <a href="/faq">Student Life</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+          <a href="/courses">Placements</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <% if (user) { %>
+            <a class="btn btn-outline" href="/dashboard">Dashboard</a>
+            <a class="btn btn-primary" href="/logout">Logout</a>
+          <% } else { %>
+            <a class="btn btn-outline" href="/login">Student Login</a>
+            <a class="btn btn-primary" href="/apply">Apply Now</a>
+          <% } %>
+        </div>
+
+        <button class="mobile-menu" type="button" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>

@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Student portal</p>
+    <h1>Welcome, <%= user.name %></h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container dashboard-grid">
+    <article class="mini-panel">
+      <h3>Profile</h3>
+      <p><strong>Student ID:</strong> STU-<%= user.id %></p>
+      <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Role:</strong> <%= user.role %></p>
+    </article>
+    <article class="mini-panel">
+      <h3>Academic links</h3>
+      <ul class="check-list small-list">
+        <li><a href="/courses">Browse Programs</a></li>
+        <li><a href="/admissions">Admission status</a></li>
+        <li><a href="/contact">Student services</a></li>
+      </ul>
+    </article>
+    <article class="mini-panel">
+      <h3>Recent announcements</h3>
+      <% announcements.forEach((item) => { %>
+        <p><strong><%= item.title %></strong> · <%= formatDate(item.published_at) %></p>
+      <% }) %>
+    </article>
+    <article class="mini-panel">
+      <h3>Upcoming events</h3>
+      <% events.forEach((item) => { %>
+        <p><strong><%= item.title %></strong> · <%= formatDate(item.event_date) %></p>
+      <% }) %>
+    </article>
+    <article class="mini-panel full-width">
+      <h3>Admission application status</h3>
+      <% if (applications && applications.length) { %>
+        <table class="data-table">
+          <thead>
+            <tr><th>Reference</th><th>Program</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <% applications.forEach((application) => { %>
+              <tr>
+                <td><%= application.reference_number %></td>
+                <td><%= application.program_applied %></td>
+                <td><%= application.status %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No admission applications are currently linked to this account.</p>
+      <% } %>
+    </article>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

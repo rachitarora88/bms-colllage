@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Department management</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container form-wrap">
+    <% if (typeof error !== 'undefined' && error) { %><div class="alert alert-error"><%= error %></div><% } %>
+    <form class="stacked-form" action="/admin/departments" method="POST">
+      <div class="form-grid">
+        <label>
+          Department name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Slug
+          <input type="text" name="slug" required />
+        </label>
+        <label>
+          Head of department
+          <input type="text" name="head_name" />
+        </label>
+        <label>
+          Contact email
+          <input type="email" name="contact_email" />
+        </label>
+        <label>
+          Image URL
+          <input type="url" name="image_url" />
+        </label>
+        <label class="full-width">
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Create Department</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr><th>Name</th><th>Head</th><th>Contact</th></tr>
+      </thead>
+      <tbody>
+        <% departments.forEach((department) => { %>
+          <tr>
+            <td><%= department.name %></td>
+            <td><%= department.head_name %></td>
+            <td><%= department.contact_email %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

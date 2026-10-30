@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Faculty portal</p>
+    <h1>Welcome, <%= user.name %></h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container dashboard-grid">
+    <article class="mini-panel">
+      <h3>Faculty profile</h3>
+      <% if (facultyRecord) { %>
+        <p><strong>Designation:</strong> <%= facultyRecord.designation %></p>
+        <p><strong>Department:</strong> <%= facultyRecord.department_id %></p>
+        <p><strong>Email:</strong> <%= facultyRecord.email %></p>
+      <% } else { %>
+        <p>No faculty profile is linked to this account.</p>
+      <% } %>
+    </article>
+    <article class="mini-panel">
+      <h3>Announcements</h3>
+      <% announcements.forEach((item) => { %>
+        <p><strong><%= item.title %></strong> · <%= formatDate(item.published_at) %></p>
+      <% }) %>
+    </article>
+    <article class="mini-panel">
+      <h3>Available programs</h3>
+      <% courses.forEach((course) => { %>
+        <p><%= course.title %></p>
+      <% }) %>
+    </article>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

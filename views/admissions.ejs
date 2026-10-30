@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Admissions</p>
+    <h1>Admission overview</h1>
+    <p>Prospective students can review requirements, timelines, and the online application process before submitting their interest.</p>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container two-col">
+    <div>
+      <h2>Who can apply</h2>
+      <p>Applicants are encouraged to review eligibility requirements for each program before starting the application. Each academic program has its own selection and documentation requirements.</p>
+      <ul class="check-list">
+        <li>Academic eligibility as published for each program</li>
+        <li>Application form completion and document submission</li>
+        <li>Confirmation of identity and contact details</li>
+      </ul>
+    </div>
+    <div class="mini-panel">
+      <h3>Important dates</h3>
+      <p><strong>Applications open:</strong> 01 October 2026</p>
+      <p><strong>Application review:</strong> Begins in November 2026</p>
+      <p><strong>Academic session:</strong> January 2027</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Requirements</p>
+      <h2>Application process</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-box"><h3>1. Choose a program</h3><p>Review the academic catalog, department details, and selection criteria for your preferred field.</p></div>
+      <div class="feature-box"><h3>2. Complete the form</h3><p>Submit personal, academic, and contact information through the secure admissions portal.</p></div>
+      <div class="feature-box"><h3>3. Upload documents</h3><p>Attach supporting materials when prompted, such as academic records and identity proof.</p></div>
+      <div class="feature-box"><h3>4. Track application status</h3><p>After submission, applicants can check the status using their reference number and secure portal access.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Admissions notices</p>
+      <h2>Latest updates</h2>
+    </div>
+    <div class="news-grid">
+      <% if (typeof announcements !== 'undefined' && announcements.length) { %>
+        <% announcements.forEach((announcement) => { %>
+          <article class="news-card">
+            <div class="card-body">
+              <p class="meta"><%= formatDate(announcement.published_at) %></p>
+              <h3><%= announcement.title %></h3>
+              <p><%= announcement.content %></p>
+            </div>
+          </article>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-strip">
+  <div class="container cta-box">
+    <div>
+      <p class="eyebrow">Ready to apply?</p>
+      <h2>Begin your application today.</h2>
+    </div>
+    <a class="btn btn-primary" href="/apply">Apply Now</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

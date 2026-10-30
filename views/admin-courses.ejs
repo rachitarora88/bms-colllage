@@ -1,0 +1,85 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Course management</h1>
+  </div>
+</section>
+
+<section class="section alt-bg">
+  <div class="container form-wrap">
+    <% if (typeof error !== 'undefined' && error) { %><div class="alert alert-error"><%= error %></div><% } %>
+    <form class="stacked-form" action="/admin/courses" method="POST">
+      <div class="form-grid">
+        <label>
+          Department
+          <select name="department_id">
+            <% departments.forEach((department) => { %>
+              <option value="<%= department.id %>"><%= department.name %></option>
+            <% }) %>
+          </select>
+        </label>
+        <label>
+          Course title
+          <input type="text" name="title" required />
+        </label>
+        <label>
+          Slug
+          <input type="text" name="slug" required />
+        </label>
+        <label>
+          Degree type
+          <input type="text" name="degree_type" value="Undergraduate" />
+        </label>
+        <label>
+          Duration
+          <input type="text" name="duration" value="4 years" />
+        </label>
+        <label>
+          Eligibility
+          <input type="text" name="eligibility" />
+        </label>
+        <label>
+          Admission process
+          <input type="text" name="admission_process" />
+        </label>
+        <label>
+          Curriculum URL
+          <input type="url" name="curriculum_url" />
+        </label>
+        <label>
+          Image URL
+          <input type="url" name="image_url" />
+        </label>
+        <label class="full-width">
+          Description
+          <textarea name="description" rows="4"></textarea>
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Create Course</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr><th>Title</th><th>Department</th><th>Degree</th><th>Duration</th></tr>
+      </thead>
+      <tbody>
+        <% courses.forEach((course) => { %>
+          <tr>
+            <td><%= course.title %></td>
+            <td><%= course.department_name %></td>
+            <td><%= course.degree_type %></td>
+            <td><%= course.duration %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

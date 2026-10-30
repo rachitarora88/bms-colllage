@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+
+<section class="section page-intro">
+  <div class="container narrow-card">
+    <p class="eyebrow">Administration</p>
+    <h1>Inquiry management</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container table-card">
+    <table class="data-table">
+      <thead>
+        <tr><th>Name</th><th>Subject</th><th>Status</th><th>Update</th></tr>
+      </thead>
+      <tbody>
+        <% inquiries.forEach((inquiry) => { %>
+          <tr>
+            <td><%= inquiry.name %></td>
+            <td><%= inquiry.subject %></td>
+            <td><%= inquiry.status %></td>
+            <td>
+              <form action="/admin/inquiries/<%= inquiry.id %>/status" method="POST" class="inline-action">
+                <select name="status">
+                  <option value="New" <%= inquiry.status === 'New' ? 'selected' : '' %>>New</option>
+                  <option value="In Progress" <%= inquiry.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+                  <option value="Resolved" <%= inquiry.status === 'Resolved' ? 'selected' : '' %>>Resolved</option>
+                </select>
+                <button class="btn btn-primary small" type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
